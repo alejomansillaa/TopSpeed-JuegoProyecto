@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 223465476}
   - component: {fileID: 223465475}
   - component: {fileID: 223465474}
-  - component: {fileID: 223465473}
+  - component: {fileID: 223465478}
   m_Layer: 0
   m_Name: AutoCorredor
   m_TagString: Player
@@ -295,40 +295,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &223465473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223465472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 691f1932055d1bd4c9149fd98da4472c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DragCarController
-  fuerzaMotor: 1200
-  desaceleracion: 60
-  rpmMinimas: 1000
-  rpmMaximas: 9000
-  velocidadAgujaRPM: 3500
-  velocidadKmh: 0
-  rpmActual: 0
-  marchaActual: 0
-  minVelocidadPorMarcha:
-  - 0
-  - 0
-  - 25
-  - 60
-  - 100
-  - 150
-  maxVelocidadPorMarcha:
-  - 0
-  - 40
-  - 80
-  - 130
-  - 180
-  - 240
 --- !u!61 &223465474
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -479,6 +445,42 @@ Transform:
   - {fileID: 247048127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &223465478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223465472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691f1932055d1bd4c9149fd98da4472c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControladorAuto
+  fuerzaMotor: 100
+  fuerzaFreno: 120
+  sensibilidadPedal: 2.5
+  resistenciaAire: 1.5
+  maxVelocidadPorMarcha:
+  - 0
+  - 60
+  - 120
+  - 200
+  - 290
+  - 354
+  fuerzaPorMarcha:
+  - 0
+  - 1.4
+  - 1.1
+  - 0.85
+  - 0.65
+  - 0.45
+  rpmMinimas: 1000
+  rpmMaximas: 11000
+  velocidadAgujaRPM: 5000
+  velocidadKmh: 0
+  rpmActual: 0
+  marchaActual: 0
 --- !u!1 &247048126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1849,7 @@ GameObject:
   - component: {fileID: 1195657092}
   - component: {fileID: 1195657091}
   - component: {fileID: 1195657095}
+  - component: {fileID: 1195657096}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1903,7 +1906,7 @@ Canvas:
   m_GameObject: {fileID: 1195657090}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1916,7 +1919,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &1195657094
 RectTransform:
@@ -1954,11 +1957,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986e76b178e371844b1bddf25e072515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HudCarrera
-  auto: {fileID: 223465473}
+  auto: {fileID: 223465478}
   textoTiempo: {fileID: 1567126902}
   textoVelocidad: {fileID: 947211697}
   textoRPM: {fileID: 1184789499}
   textoMarcha: {fileID: 1408774175}
+--- !u!114 &1195657096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195657090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5d0d5c77072d44fbea8ce1c7f2bf9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RelojesAuto
+  auto: {fileID: 0}
+  agujaVelocidad: {fileID: 0}
+  anguloCeroVelocidad: 135
+  anguloMaxVelocidad: -135
+  velocidadMaximaDial: 250
+  agujaRPM: {fileID: 0}
+  anguloCeroRPM: 135
+  anguloMaxRPM: -135
+  textoVelocidad: {fileID: 947211697}
+  textoMarcha: {fileID: 1184789499}
 --- !u!1 &1408774173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,7 +2018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 851, y: -402}
+  m_AnchoredPosition: {x: 851.1, y: -392}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1408774175

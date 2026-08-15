@@ -2,24 +2,29 @@ using UnityEngine;
 
 public class ControladorAuto : MonoBehaviour
 {
-    [Header("Configuración del Motor")]
-    public float fuerzaMotor = 1200f;
-    public float desaceleracion = 60f;     // Fuerza con la que frena al soltar la 'W'
-    public float rpmMinimas = 0f;       // Ralentí
-    public float rpmMaximas = 9000f;       // Corte de inyección
-    public float velocidadAgujaRPM = 5000f; // Rapidez con la que se mueve el indicador de RPM
+    [Header("Configuración de Aceleración y Motor")]
+    public float fuerzaMotor = 20f;
+    public float fuerzaFreno = 120f; // Ajusta en el Inspector la potencia del frenado
+    public float sensibilidadPedal = 2.5f;
+    public float resistenciaAire = 1.5f;
 
-    [Header("Telemetría")]
+    [Header("Rangos por Marcha")]
+    public float[] maxVelocidadPorMarcha = { 0f, 40f, 80f, 130f, 180f, 250f };
+    public float[] fuerzaPorMarcha = { 0f, 1.4f, 1.1f, 0.85f, 0.65f, 0.45f };
+
+    [Header("Configuración de RPM")]
+    public float rpmMinimas = 1000f;
+    public float rpmMaximas = 9000f;
+    public float velocidadAgujaRPM = 5000f;
+
     public float velocidadKmh;
     public float rpmActual;
-    public int marchaActual = 0; // 0 = Neutro (N), 1 a 5 = Marchas
-
-    [Header("Rangos de Velocidad por Marcha (N, 1ª, 2ª, 3ª, 4ª, 5ª)")]
-    public float[] minVelocidadPorMarcha = { 0f, 0f, 25f, 60f, 100f, 150f };
-    public float[] maxVelocidadPorMarcha = { 0f, 40f, 80f, 130f, 180f, 250f };
+    public int marchaActual = 0;
 
     private Rigidbody2D rb;
     private bool estaAcelerando;
+    private bool estaFrenando;
+    private float pedalAcelerador = 0f;
 
     void Start()
     {
@@ -29,82 +34,69 @@ public class ControladorAuto : MonoBehaviour
 
     void Update()
     {
-        // Detectamos el teclado en Update para una respuesta inmediata
         estaAcelerando = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        estaFrenando = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 
-        GestionarCambios();
-        CalcularTelemetria();
+        float objetivoPedal = estaAcelerando ? 1f : 0f;
+        pedalAcelerador = Mathf.MoveTowards(pedalAcelerador, objetivoPedal, sensibilidadPedal * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.E) && marchaActual < maxVelocidadPorMarcha.Length - 1) marchaActual++;
+        if (Input.GetKeyDown(KeyCode.Q) && marchaActual > 0) marchaActual--;
+
+        CalcularRPM();
     }
 
     void FixedUpdate()
     {
-        ManejarFisicasMotor();
-    }
+        velocidadKmh = rb.linearVelocity.magnitude * 3.6f;
 
-    void GestionarCambios()
-    {
-        // Subir marcha con 'E'
-        if (Input.GetKeyDown(KeyCode.E) && marchaActual < 5)
+        // 1. FRENO ACTIVO (Tecla S)
+        if (estaFrenando)
         {
-            marchaActual++;
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, Vector2.zero, fuerzaFreno * Time.fixedDeltaTime);
         }
-
-        // Bajar marcha con 'Q'
-        if (Input.GetKeyDown(KeyCode.Q) && marchaActual > 0)
-        {
-            marchaActual--;
-        }
-    }
-
-    void ManejarFisicasMotor()
-    {
-        if (marchaActual > 0)
+        // 2. ACELERACIÓN / RETENCIÓN EN MARCHA
+        else if (marchaActual > 0 && marchaActual < maxVelocidadPorMarcha.Length)
         {
             float maxVel = maxVelocidadPorMarcha[marchaActual];
+            float multiplicadorTorque = fuerzaPorMarcha[marchaActual];
+            float factorProgresion = Mathf.Clamp01(1f - (velocidadKmh / maxVel));
 
-            if (estaAcelerando)
+            float fuerzaEfectiva = fuerzaMotor * multiplicadorTorque * factorProgresion * pedalAcelerador;
+
+            if (velocidadKmh < maxVel)
             {
-                // Acelera solo si no ha alcanzado la velocidad máxima de la marcha actual
-                if (velocidadKmh < maxVel)
-                {
-                    rb.AddForce(Vector2.right * fuerzaMotor);
-                }
-            }
-            else
-            {
-                // AL SOLTAR 'W': Aplica freno motor efectivo reduciendo la velocidad a 0
-                rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, Vector2.zero, desaceleracion * Time.fixedDeltaTime);
+                rb.AddForce(Vector2.right * fuerzaEfectiva, ForceMode2D.Force);
             }
 
-            // Retención si la velocidad supera el límite de la marcha seleccionada
-            if (velocidadKmh > maxVel)
+            if (!estaAcelerando)
             {
-                rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, rb.linearVelocity.normalized * (maxVel / 3.6f), Time.fixedDeltaTime * 20f);
+                rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, Vector2.zero, resistenciaAire * Time.fixedDeltaTime);
             }
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, Vector2.zero, resistenciaAire * Time.fixedDeltaTime);
         }
     }
 
-    void CalcularTelemetria()
+    void CalcularRPM()
     {
-        velocidadKmh = rb.linearVelocity.magnitude * 3.6f;
         float targetRPM = rpmMinimas;
 
-        if (marchaActual == 0) // NEUTRO
+        if (marchaActual == 0)
         {
-            // En Neutro: sube a 9000 al acelerar y vuelve a 1500 al soltar
-            targetRPM = estaAcelerando ? rpmMaximas : rpmMinimas;
+            targetRPM = Mathf.Lerp(rpmMinimas, rpmMaximas, pedalAcelerador);
         }
-        else // EN MARCHA (1ª a 5ª)
+        else
         {
-            float minVel = minVelocidadPorMarcha[marchaActual];
+            float minVel = (marchaActual > 1) ? maxVelocidadPorMarcha[marchaActual - 1] * 0.4f : 0f;
             float maxVel = maxVelocidadPorMarcha[marchaActual];
 
-            // Porcentaje de velocidad en la marcha actual
             float progresoMarcha = Mathf.InverseLerp(minVel, maxVel, velocidadKmh);
             targetRPM = Mathf.Lerp(rpmMinimas, rpmMaximas, progresoMarcha);
         }
 
-        // Transición lineal limpia para las RPM
         rpmActual = Mathf.MoveTowards(rpmActual, targetRPM, velocidadAgujaRPM * Time.deltaTime);
     }
 
