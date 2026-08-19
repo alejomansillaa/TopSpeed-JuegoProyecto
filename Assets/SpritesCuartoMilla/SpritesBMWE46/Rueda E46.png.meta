@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 3005a178667386544b39c541a242d90e
+guid: 8c519e8ad4db7744ca26d775e0afd071
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4412164869933323507
-    second: Bandera_0
+      213: -5860449051102502675
+    second: Rueda E46_0
+  - first:
+      213: -2584173429648751335
+    second: Rueda E46_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bandera_0
+      name: Rueda E46_0
       rect:
         serializedVersion: 2
-        x: 417
-        y: 155
-        width: 198
-        height: 595
+        x: 24
+        y: 16
+        width: 1191
+        height: 1202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f455d292982b3d30800000000000000
-      internalID: 4412164869933323507
+      spriteID: de0a2c453a08baea0800000000000000
+      internalID: -5860449051102502675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rueda E46_1
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 31
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91588cf05fb232cd0800000000000000
+      internalID: -2584173429648751335
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bandera_0: 4412164869933323507
+      Rueda E46_0: -5860449051102502675
+      Rueda E46_1: -2584173429648751335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

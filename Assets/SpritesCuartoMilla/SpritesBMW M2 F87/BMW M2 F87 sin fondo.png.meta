@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 3005a178667386544b39c541a242d90e
+guid: 2863019163ddcfb4492ac9ad6b4918a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4412164869933323507
-    second: Bandera_0
+      213: -6813904311153924764
+    second: BMW M2 F87 sin fondo_0
+  - first:
+      213: 8639918023040355352
+    second: BMW M2 F87 sin fondo_1
+  - first:
+      213: 5276496872615846834
+    second: BMW M2 F87 sin fondo_2
+  - first:
+      213: -1633868871643605490
+    second: BMW M2 F87 sin fondo_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bandera_0
+      name: BMW M2 F87 sin fondo_0
       rect:
         serializedVersion: 2
-        x: 417
-        y: 155
-        width: 198
-        height: 595
+        x: 24
+        y: 39
+        width: 1512
+        height: 965
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f455d292982b3d30800000000000000
-      internalID: 4412164869933323507
+      spriteID: 465ea2071262071a0800000000000000
+      internalID: -6813904311153924764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BMW M2 F87 sin fondo_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 781
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81cc0db6aa727e770800000000000000
+      internalID: 8639918023040355352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BMW M2 F87 sin fondo_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 797
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b32ab613f1e93940800000000000000
+      internalID: 5276496872615846834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BMW M2 F87 sin fondo_3
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 786
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e065d18fae45359e0800000000000000
+      internalID: -1633868871643605490
       vertices: []
       indices: 
       edges: []
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bandera_0: 4412164869933323507
+      BMW M2 F87 sin fondo_0: -6813904311153924764
+      BMW M2 F87 sin fondo_1: 8639918023040355352
+      BMW M2 F87 sin fondo_2: 5276496872615846834
+      BMW M2 F87 sin fondo_3: -1633868871643605490
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -3,8 +3,8 @@ using UnityEngine;
 public class ControladorAuto : MonoBehaviour
 {
     [Header("Configuración de Aceleración y Motor")]
-    public float fuerzaMotor = 20f;
-    public float fuerzaFreno = 120f; // Ajusta en el Inspector la potencia del frenado
+    public float fuerzaMotor = 85f;
+    public float fuerzaFreno = 70f; // Ajusta en el Inspector la potencia del frenado
     public float sensibilidadPedal = 2.5f;
     public float resistenciaAire = 1.5f;
 
@@ -14,7 +14,7 @@ public class ControladorAuto : MonoBehaviour
 
     [Header("Configuración de RPM")]
     public float rpmMinimas = 1000f;
-    public float rpmMaximas = 9000f;
+    public float rpmMaximas = 11000f;
     public float velocidadAgujaRPM = 5000f;
 
     public float velocidadKmh;

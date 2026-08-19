@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3005a178667386544b39c541a242d90e
+guid: 274a53fb41d80d747a6003a78de13b51
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4412164869933323507
-    second: Bandera_0
+      213: 1571388834385058938
+    second: cropped_circle_image_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bandera_0
+      name: cropped_circle_image_0
       rect:
         serializedVersion: 2
-        x: 417
-        y: 155
-        width: 198
-        height: 595
+        x: 0
+        y: 2
+        width: 251
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f455d292982b3d30800000000000000
-      internalID: 4412164869933323507
+      spriteID: a7c598db1d1bec510800000000000000
+      internalID: 1571388834385058938
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bandera_0: 4412164869933323507
+      cropped_circle_image_0: 1571388834385058938
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3005a178667386544b39c541a242d90e
+guid: 646154e4a5b4ac543b9cc585dbe29808
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4412164869933323507
-    second: Bandera_0
+      213: -6715544809035169332
+    second: Noche2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bandera_0
+      name: Noche2_0
       rect:
         serializedVersion: 2
-        x: 417
-        y: 155
-        width: 198
-        height: 595
+        x: 0
+        y: 0
+        width: 1024
+        height: 576
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f455d292982b3d30800000000000000
-      internalID: 4412164869933323507
+      spriteID: cc18d30a3979dc2a0800000000000000
+      internalID: -6715544809035169332
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bandera_0: 4412164869933323507
+      Noche2_0: -6715544809035169332
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
