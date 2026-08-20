@@ -3,24 +3,40 @@ using UnityEngine.SceneManagement;
 
 public class SelectorMapa : MonoBehaviour
 {
-    [Header("Escenas")]
-    public string escenaCarrera = "CarreraCuartoDeMilla";
-    public string escenaMenuInicio = "MenuDelInicio";
+    [Header("Escenas de Navegación")]
+    [Tooltip("Escena a la que irá tras seleccionar un mapa")]
+    public string escenaSiguiente = "MenuSeleccionAuto";
 
-    public void SeleccionarDia() => GuardarMapaYJugar("Dia");
-    public void SeleccionarTarde() => GuardarMapaYJugar("Tarde");
-    public void SeleccionarNoche() => GuardarMapaYJugar("Noche");
+    [Tooltip("Escena a la que irá al presionar el botón Volver")]
+    public string escenaMenuInicio = "MenuSelectorModo";
 
-    private void GuardarMapaYJugar(string mapaElegido)
+    public void SeleccionarMapaDia()
     {
-        PlayerPrefs.SetString("MapaTiempo", mapaElegido);
-        PlayerPrefs.Save();
+        PlayerPrefs.SetString("MapaSeleccionado", "Dia");
+        CargarSiguiente();
+    }
 
-        SceneManager.LoadScene(escenaCarrera);
+    public void SeleccionarMapaTarde()
+    {
+        PlayerPrefs.SetString("MapaSeleccionado", "Atardecer");
+        CargarSiguiente();
+    }
+
+    public void SeleccionarMapaNoche()
+    {
+        PlayerPrefs.SetString("MapaSeleccionado", "Noche");
+        CargarSiguiente();
+    }
+
+    private void CargarSiguiente()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(escenaSiguiente);
     }
 
     public void VolverAlMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(escenaMenuInicio);
     }
 }

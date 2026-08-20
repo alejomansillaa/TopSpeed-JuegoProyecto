@@ -116,10 +116,10 @@ TextureImporter:
       name: Rueda M2 F87_0
       rect:
         serializedVersion: 2
-        x: 103
-        y: 145
-        width: 1053
-        height: 1027
+        x: 84
+        y: 118
+        width: 861
+        height: 840
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

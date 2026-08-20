@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 5674a8829ddcd644dbe3176151f546b4
+guid: 2125e761d8c74744082e2ce21b1bc293
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4477458501182461713
-    second: dia-pista-1920x1080_0
+      213: 733317169864563720
+    second: Rueda E46 1_0
+  - first:
+      213: -3070887388831525371
+    second: Rueda E46 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dia-pista-1920x1080_0
+      name: Rueda E46 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 19
+        y: 27
+        width: 958
+        height: 953
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe8677c373fdcd1c0800000000000000
-      internalID: -4477458501182461713
+      spriteID: 80cd879a4144d2a00800000000000000
+      internalID: 733317169864563720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rueda E46 1_1
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 25
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 506587ba0340265d0800000000000000
+      internalID: -3070887388831525371
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dia-pista-1920x1080_0: -4477458501182461713
+      Rueda E46 1_0: 733317169864563720
+      Rueda E46 1_1: -3070887388831525371
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
